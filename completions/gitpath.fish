@@ -1,18 +1,18 @@
-complete -c cd-gitpath -x
-complete -c cd-gitpath -n '__fish_is_first_token' -s h -l help -d 'Display this help and exit'
-complete -c cd-gitpath -n '__fish_is_first_token' -xa '(_cd-gitpath_complete_path)'
+complete -c gitpath -x
+complete -c gitpath -n '__fish_is_first_token' -s h -l help -d 'Display this help and exit'
+complete -c gitpath -n '__fish_is_first_token' -xa '(_gitpath_complete_path)'
 
-function _cd-gitpath_complete_path
+function _gitpath_complete_path
   if not git rev-parse --is-inside-work-tree > /dev/null 2>&1
     # not in git working tree
     return 2
   end
 
   set -l root_path (git rev-parse --show-toplevel)
-  _cd-gitpath_fish_complete_directories $root_path (commandline -tc)
+  _gitpath_fish_complete_directories $root_path (commandline -tc)
 end
 
-function _cd-gitpath_fish_complete_directories
+function _gitpath_fish_complete_directories
   set -l base_directory $argv[1]
   set -l current $argv[2]
 
@@ -23,7 +23,7 @@ function _cd-gitpath_fish_complete_directories
 
   set desc (_ "Directory")
   set -l dirs (
-    complete -C"_cd-gitpath_not_exist_command_for_completion_directory_xxx $base_directory$current" \
+    complete -C"_gitpath_not_exist_command_for_completion_directory_xxx $base_directory$current" \
       | string match -r '.*/$' \
       | string replace $base_directory ''
   )

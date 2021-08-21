@@ -3,7 +3,7 @@
 ## Synopsis
 Fish shell plugin to use paths in git repository.
 
-Inspired by https://github.com/mollifier/fish-cd-gitpath and https://qiita.com/bigwheel/items/9b16337cab5a82ff9649
+Inspired by https://github.com/mollifier/fish-cd-gitroot and https://qiita.com/bigwheel/items/9b16337cab5a82ff9649
 
 ## How to set up
 

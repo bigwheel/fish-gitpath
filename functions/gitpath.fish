@@ -1,14 +1,14 @@
-function cd-gitpath
-  argparse -n cd-gitpath 'h/help' -- $argv
+function gitpath
+  argparse -n gitpath 'h/help' -- $argv
     or return 1
 
   if set -lq _flag_h
-    _cd-gitpath_print_help
+    _gitpath_print_help
     return
   end
 
   if not git rev-parse --is-inside-work-tree > /dev/null 2>&1
-    _cd-gitpath_print_error 'Not in a git repository'
+    _gitpath_print_error 'Not in a git repository'
     return 2
   end
 
@@ -22,8 +22,8 @@ function cd-gitpath
   end
 end
 
-function _cd-gitpath_print_help
-  echo 'Usage: cd-gitpath [OPTION] [PATH]
+function _gitpath_print_help
+  echo 'Usage: gitpath [OPTION] [PATH]
 Change directory to current git repository root directory.
 If PATH is specified, change directory to PATH instead of it.
 PATH is treated relative path in git root directory.
@@ -32,8 +32,7 @@ PATH is treated relative path in git root directory.
 
 end
 
-function _cd-gitpath_print_error
-  echo "cd-gitpath: $argv
+function _gitpath_print_error
+  echo "gitpath: $argv
 Try '-h' or '--help' option for more information." 1>&2
-
 end
