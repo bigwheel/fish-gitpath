@@ -11,7 +11,7 @@ Inspired by https://github.com/mollifier/fish-cd-gitroot and https://qiita.com/b
 We recommend using [fisher](https://github.com/jorgebucaran/fisher) to install fish-gitpath.
 
 ```fish
-fisher add bigwheel/fish-gitpath
+fisher install bigwheel/fish-gitpath
 ```
 
 ## Usage
