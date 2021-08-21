@@ -24,12 +24,11 @@ function _gitpath_fish_complete_directories
   set desc (_ "Directory")
   set -l dirs (
     complete -C"_gitpath_not_exist_command_for_completion_directory_xxx $base_directory$current" \
-      | string match -r '.*/$' \
       | string replace $base_directory ''
   )
 
   if set -q dirs[1]
-    printf "%s\t$desc\n" $dirs
+    printf "%s\n" $dirs
   end
 end
 
