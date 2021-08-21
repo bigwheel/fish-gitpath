@@ -23,3 +23,7 @@ git log (gitroot [RELATIVE_PATH])
 
 If RELATIVE_PATH isn't specified, gitroot function returns git repository root directory,
 else returns abusolute path that is concatenated by git root path and RELATIVE_PATH.
+
+## Options
+
+\--help, -h    display help and exit
