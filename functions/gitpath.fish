@@ -16,17 +16,17 @@ function gitpath
   set -l relative_path $argv[1]
 
   if test -z "$relative_path"
-    cd -- $root_path
+    echo $root_path
   else
-    cd -- $root_path/$relative_path
+    echo $root_path/$relative_path
   end
 end
 
 function _gitpath_print_help
-  echo 'Usage: gitpath [OPTION] [PATH]
-Change directory to current git repository root directory.
-If PATH is specified, change directory to PATH instead of it.
-PATH is treated relative path in git root directory.
+  echo 'Usage: gitpath [OPTION] [RELATIVE_PATH]
+Fish shell plugin to use paths in git repository.
+If RELATIVE_PATH isn\'t specified, gitpath function returns git repository root directory,
+else returns abusolute path that is concatenated by git root path and RELATIVE_PATH.
 
 -h, --help    display this help and exit'
 
