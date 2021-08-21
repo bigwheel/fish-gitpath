@@ -9,10 +9,10 @@ function _gitpath_complete_path
   end
 
   set -l root_path (git rev-parse --show-toplevel)
-  _gitpath_fish_complete_directories $root_path (commandline -tc)
+  _gitpath_fish_complete_files $root_path (commandline -tc)
 end
 
-function _gitpath_fish_complete_directories
+function _gitpath_fish_complete_files
   set -l base_directory $argv[1]
   set -l current $argv[2]
 
@@ -21,9 +21,8 @@ function _gitpath_fish_complete_directories
   # add/ to end
   set base_directory {$base_directory}/
 
-  set desc (_ "Directory")
   set -l dirs (
-    complete -C"_gitpath_not_exist_command_for_completion_directory_xxx $base_directory$current" \
+    complete -C"_gitpath_not_exist_command_for_completion_file_xxx $base_directory$current" \
       | string replace $base_directory ''
   )
 
