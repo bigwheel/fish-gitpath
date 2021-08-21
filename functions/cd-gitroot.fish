@@ -1,14 +1,14 @@
-function cd-gitroot
-  argparse -n cd-gitroot 'h/help' -- $argv
+function cd-gitpath
+  argparse -n cd-gitpath 'h/help' -- $argv
     or return 1
 
   if set -lq _flag_h
-    _cd-gitroot_print_help
+    _cd-gitpath_print_help
     return
   end
 
   if not git rev-parse --is-inside-work-tree > /dev/null 2>&1
-    _cd-gitroot_print_error 'Not in a git repository'
+    _cd-gitpath_print_error 'Not in a git repository'
     return 2
   end
 
@@ -22,8 +22,8 @@ function cd-gitroot
   end
 end
 
-function _cd-gitroot_print_help
-  echo 'Usage: cd-gitroot [OPTION] [PATH]
+function _cd-gitpath_print_help
+  echo 'Usage: cd-gitpath [OPTION] [PATH]
 Change directory to current git repository root directory.
 If PATH is specified, change directory to PATH instead of it.
 PATH is treated relative path in git root directory.
@@ -32,8 +32,8 @@ PATH is treated relative path in git root directory.
 
 end
 
-function _cd-gitroot_print_error
-  echo "cd-gitroot: $argv
+function _cd-gitpath_print_error
+  echo "cd-gitpath: $argv
 Try '-h' or '--help' option for more information." 1>&2
 
 end
